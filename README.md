@@ -225,6 +225,48 @@ Não são utilizados frameworks que escondam o funcionamento dos sockets.
 
 # 7. Execução
 
+## 7.0 VirtualMachines
+Criar 3 Vms, um para o Servidor, um para o Cliente e um para o Observador.
+
+```bash
+usar linux ubuntu iso
+```
+
+```bash
+baixar e configurar python3 em cada vm
+
+sudo apt update
+sudo apt install python3 -y
+```
+
+```bash
+baixar e instalar wireshark no observador
+
+sudo apt update
+sudo apt install python3 wireshark -y
+```
+
+Em cada ambiente, setar conexao com internet e com a rede interna 'labredes'. Ao iniciar cada vm, configurar o endereço de cada máquina.
+
+Servidor:
+```bash
+sudo ip addr add 10.10.10.20/24 dev enp0s3
+ip -br a
+```
+
+Cliente:
+```bash
+sudo ip addr add 10.10.10.10/24 dev enp0s3
+ip -br a
+```
+
+Observador:
+```bash
+sudo ip addr add 10.10.10.30/24 dev enp0s3
+ip -br a
+```
+
+
 ## 7.1 Verificar a conectividade
 
 Antes de executar a aplicação, é possível testar a comunicação entre as máquinas.
@@ -252,12 +294,19 @@ Na VM Servidor:
 ```text
 IP: 10.10.10.20
 ```
+Crie um diretorio lab-redes
+
+```bash
+mkdir -p ~/lab-redes
+```
 
 Acesse o diretório onde está o código:
 
 ```bash
 cd ~/lab-redes
 ```
+
+E cole lá o arquivo servidor.py
 
 Execute:
 
@@ -282,6 +331,21 @@ Na VM Observador:
 ```text
 IP: 10.10.10.30
 ```
+
+Crie um diretorio lab-redes
+
+```bash
+mkdir -p ~/lab-redes
+```
+
+Acesse o diretório onde está o código:
+
+```bash
+cd ~/lab-redes
+```
+
+E cole lá o arquivo sniffer.py
+
 
 Acesse o diretório do programa:
 
@@ -326,6 +390,21 @@ Na VM Cliente:
 ```text
 IP: 10.10.10.10
 ```
+
+Crie um diretorio lab-redes
+
+```bash
+mkdir -p ~/lab-redes
+```
+
+Acesse o diretório onde está o código:
+
+```bash
+cd ~/lab-redes
+```
+
+E cole lá o arquivo cliente.py
+
 
 Acesse:
 
